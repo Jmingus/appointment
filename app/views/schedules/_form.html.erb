@@ -1,4 +1,4 @@
-<%= form_for(@schedule) do |f| %>
+<%= simple_form_for(@schedule) do |f| %>
   <% if @schedule.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@schedule.errors.count, "error") %> prohibited this schedule from being saved:</h2>
@@ -12,46 +12,37 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :first_name %><br>
-    <%= f.text_field :first_name %>
+    <%= f.input :first_name, label: 'First Name' %><br>
   </div>
   <div class="field">
-    <%= f.label :last_name %><br>
-    <%= f.text_field :last_name %>
+    <%= f.input :last_name, label: 'Last Name' %><br>
   </div>
   <div class="field">
-    <%= f.label :age %><br>
-    <%= f.number_field :age %>
+    <%= f.input :age, collection: 0..125, label: 'Age' %><br>
   </div>
   <div class="field">
-    <%= f.label :dob %><br>
-    <%= f.date_select :dob %>
+    <%= f.input :dob, as: :date, label: 'Date of Birth' %><br>
   </div>
   <div class="field">
-    <%= f.label :city %><br>
-    <%= f.text_field :city %>
+    <%= f.input :city, label: 'City' %><br>
   </div>
   <div class="field">
-    <%= f.label :state %><br>
-    <%= f.text_field :state %>
+	  <%= f.label :state %>
+    <%= f.select( :state, options_for_select(us_states, "TX")) %><br>
   </div>
   <div class="field">
-    <%= f.label :zipcode %><br>
-    <%= f.text_field :zipcode %>
+    <%= f.input :zipcode, label: 'Zipcode' %><br>
   </div>
   <div class="field">
-    <%= f.label :urgency %><br>
-    <%= f.text_field :urgency %>
+    <%= f.input :urgency, label: 'Urgency' %><br>
   </div>
   <div class="field">
-    <%= f.label :time %><br>
-    <%= f.datetime_select :time %>
+    <%= f.input :time, as: :datetime, label: 'Time' %><br>
   </div>
   <div class="field">
-    <%= f.label :note %><br>
-    <%= f.text_area :note %>
+    <%= f.input :note, as: :text, label: 'Notes' %><br>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Create Appointment', class: 'btn btn-default'%>
   </div>
 <% end %>

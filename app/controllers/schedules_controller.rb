@@ -6,7 +6,9 @@ class SchedulesController < ApplicationController
   def index
     @schedules = Schedule.all
   end
-
+  def admin
+    @schedules = Schedule.sort_by_age.sort_by_last_name
+  end
   # GET /schedules/1
   # GET /schedules/1.json
   def show

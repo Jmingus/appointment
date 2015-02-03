@@ -5,7 +5,7 @@ class Schedule < ActiveRecord::Base
   validates_uniqueness_of :time, message: 'has already been taken'
   validates :zipcode, length: { is: 5 }, numericality: { only_integer: true }
   validates :urgency, inclusion: { in: %w(High Low None) }
-  validates :state, inclusion:
 
-
+  scope :sort_by_age, -> { order(age: :desc) }
+  scope :sort_by_last_name, -> { order(:last_name)}
 end
