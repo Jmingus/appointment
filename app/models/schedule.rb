@@ -8,4 +8,5 @@ class Schedule < ActiveRecord::Base
 
   scope :sort_by_age, -> { order(age: :desc) }
   scope :sort_by_last_name, -> { order(:last_name)}
+  scope :by_state, -> { where(state: 'Texas') }
 end

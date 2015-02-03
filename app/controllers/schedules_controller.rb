@@ -5,9 +5,10 @@ class SchedulesController < ApplicationController
   # GET /schedules.json
   def index
     @schedules = Schedule.all
+    @schedule = Schedule.new
   end
   def admin
-    @schedules = Schedule.sort_by_age.sort_by_last_name
+    @schedules = Schedule.by_state.sort_by_age.sort_by_last_name
   end
   # GET /schedules/1
   # GET /schedules/1.json
@@ -30,8 +31,8 @@ class SchedulesController < ApplicationController
 
     respond_to do |format|
       if @schedule.save
-        format.html { redirect_to @schedule, notice: 'Schedule was successfully created.' }
-        format.json { render :show, status: :created, location: @schedule }
+        format.html { redirect_to root_path, notice: 'Appointment was successfully created.' }
+        format.json { render json: @schedule, status: :created, location: @schedule }
       else
         format.html { render :new }
         format.json { render json: @schedule.errors, status: :unprocessable_entity }
@@ -44,7 +45,7 @@ class SchedulesController < ApplicationController
   def update
     respond_to do |format|
       if @schedule.update(schedule_params)
-        format.html { redirect_to @schedule, notice: 'Schedule was successfully updated.' }
+        format.html { redirect_to @schedule, notice: 'Appointment was successfully updated.' }
         format.json { render :show, status: :ok, location: @schedule }
       else
         format.html { render :edit }
