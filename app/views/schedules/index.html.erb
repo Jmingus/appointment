@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Schedules</h1>
-<%= render 'form' %>
-<table>
+<h1>Appointment List</h1>
+
+<table class="table table-hover">
   <thead>
     <tr>
       <th>First name</th>
@@ -32,9 +32,8 @@
         <td><%= schedule.urgency %></td>
         <td><%= schedule.time %></td>
         <td><%= schedule.note %></td>
-        <td><%= link_to 'Show', schedule %></td>
-        <td><%= link_to 'Edit', edit_schedule_path(schedule) %></td>
-        <td><%= link_to 'Destroy', schedule, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit Appointment', edit_schedule_path(schedule) %></td>
+        <td><%= link_to 'Delete Appointment', schedule, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -42,4 +41,27 @@
 
 <br>
 
-<%= link_to 'New Schedule', new_schedule_path %>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  Create new appointment
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">New Appointment</h4>
+      </div>
+      <div class="modal-body">
+        <%= render 'form' %>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close Form</button>
+      </div>
+      <div class="modal-footer">
+
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -13,3 +13,14 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import 'schedules';
+
+body { padding-top: 70px;
+        margin-right: 10%;
+        margin-left: 10%;}
+.navbar {
+  h2{
+    float: left;
+    margin-right: 20px;
+  }
+}
